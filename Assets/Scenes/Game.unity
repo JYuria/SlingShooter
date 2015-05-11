@@ -99,6 +99,7 @@ GameObject:
   - 92: {fileID: 293088867}
   - 124: {fileID: 293088866}
   - 81: {fileID: 293088865}
+  - 114: {fileID: 293088870}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -171,6 +172,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &293088870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 293088864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0527527b9d843b04992355fb44176a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poi: {fileID: 0}
+  easing: .0500000007
 --- !u!1 &463771119
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,8 +412,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 937556749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 1}
+  m_LocalPosition: {x: -100, y: -10, z: 0}
+  m_LocalScale: {x: 400, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -442,7 +456,7 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1492155658}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 99224017e066bf84e874a3c1d2c09a6e, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -460,7 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabProjectile: {fileID: 134074, guid: 6c0e62b02bbbd394cb4c784f19340c96, type: 2}
-  velocityMult: 4
+  velocityMult: 10
 --- !u!1 &1544446898
 GameObject:
   m_ObjectHideFlags: 0
