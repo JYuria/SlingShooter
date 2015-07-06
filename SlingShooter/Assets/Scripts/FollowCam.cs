@@ -11,7 +11,9 @@ public class FollowCam : MonoBehaviour {
 	
 	public GameObject poi;
 	private float camZ;
-	
+
+
+
 	
 	void Awake() {
 		S = this;
@@ -26,12 +28,12 @@ public class FollowCam : MonoBehaviour {
 		if(poi == null) {
 			// Set the destination to the Zero-Vector
 			destination = Vector3.zero;
-			
+			destination = GameController.S.newDestination;
 		} else {
 			// the poi exists
 			// Get its position
-			destination = poi.transform.position;
-			
+			//destination = poi.transform.position;
+			destination = GameController.S.newDestination;
 			// Check if the poi is a projectile
 			if (poi.tag == "Projectile") {
 				
@@ -40,7 +42,7 @@ public class FollowCam : MonoBehaviour {
 					
 					// set it to "null" as default value in next update
 					poi = null;
-					
+					GameController.S.newDestination = Vector3.zero;
 					return;
 					
 				}
@@ -48,13 +50,17 @@ public class FollowCam : MonoBehaviour {
 				
 			}
 		}
-		
+
+
+	
+
+
 		destination.x = Mathf.Max (minXY.x, destination.x);
 		destination.y = Mathf.Max (minXY.y, destination.y);
 		
 		destination = Vector3.Lerp(transform.position, destination, easing);
 		destination.z = camZ;
-		
+
 		transform.position = destination;
 		
 		this.GetComponent<Camera>().orthographicSize = 10 + destination.y;
