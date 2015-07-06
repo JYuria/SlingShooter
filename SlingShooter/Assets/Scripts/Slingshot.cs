@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Slingshot : MonoBehaviour {
@@ -20,7 +20,7 @@ public class Slingshot : MonoBehaviour {
 
 
 
-private 
+
 
 
 	void Awake(){
@@ -94,8 +94,5 @@ private
 		//fire it off
 	}
 
+
 }
-
-
-
-

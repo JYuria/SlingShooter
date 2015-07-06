@@ -33,9 +33,7 @@ public class GameController : MonoBehaviour {
 
 	private string showing = "Slingshot";
 
-
-
-	int cameratest;
+	private int setCamera;
 
 	void Start (){
 	
@@ -63,62 +61,33 @@ public class GameController : MonoBehaviour {
 
 
 
-
-
-		
-		
-//		GameObject Castle = GameObject.Find("Goal");
-		//GameObject Slingshot = GameObject.Find("Slingshot");
-	
-			
-		//private int cameratest;
-//		//check if poi exist and set destination
-//		if (FollowCam.S.poi != null) {
-//			newDestination = FollowCam.S.poi.transform.position;
-//
-//			//check if poi moved
-//			if (FollowCam.S.poi.transform.position != Vector3.zero) {
-//
-//				
-//				}  if (cameratest == 2){
-//					newDestination = Castle.transform.position;
-//				}  if (cameratest == 3){
-//				newDestination = (Slingshot.transform.position+Castle.transform.position)/2;
-//				newDestination.y = newDestination.x/2;
-//				}
-//			}
-//		}
-
-
 	//check if poi is empty 
 		//if not, follow poi
 		if (FollowCam.S.poi != null) {
 			newDestination = FollowCam.S.poi.transform.position;
 
-
 			if (FollowCam.S.poi.transform.position != Vector3.zero) {
 				//if poi moves, change color 
 				this.changeButtons(Color.grey);
 
-				if (cameratest == 1){
-
+				//if Button pressed (-> setCamera = 1) set camera to zero; else still follow poi
+				if (setCamera == 1){
 					newDestination = Vector3.zero;
-				} else {
+					} else {
 					newDestination = FollowCam.S.poi.transform.position;}
-
+				}
 		}
 
-		
-		}
-
-	//check if destination is zero -> change buttons (back) to white 	  
+	//check if camero is to zero  	  
 		if (newDestination == Vector3.zero){
-			cameratest = 0;
+			//reset setCamera
+			setCamera = 0;
 			FollowCam.S.poi = null;
-		this.changeButtons(Color.green);
+	//change buttons (back) to white
+		this.changeButtons(Color.white);
 		}
 
-		print (cameratest);
+
 
 }
 
@@ -171,41 +140,29 @@ public class GameController : MonoBehaviour {
 			//if "Slingshot" pressed switch to Slingshot -> poi = null
 
 	
-
+		//define Castle and Slingshot
 		GameObject Castle = GameObject.Find("Goal");
 		GameObject Slingshot = GameObject.Find("Slingshot");
 	
-
-
-
-
-		if (view == "SlingShot") {
-
-			//newDestination = FollowCam.S.poi.transform.position;
+		//check if button pressed
+		if (view == "SlingShot"){
+			//set camera to zero
 			newDestination = Vector3.zero;
 
-			cameratest = 1;
+			//set setCamera to 1 to check if the button is pressed
+			setCamera = 1 ;
 		}
 		
-		
-		
 		if (view == "Castle") {
-			
+			//set camera position to Goal in the Castle
 			newDestination = Castle.transform.position;
-
-			//cameratest = 2;
 		} 
 		
 		if (view == "Both") {
-			
-			
+			//find the center between slingshot and Castle and zoom out
 			newDestination = (Slingshot.transform.position+Castle.transform.position)/2;
 			newDestination.y = newDestination.x/2;
-
-			//cameratest = 3;
 		}
-
-
 
 	}
 
