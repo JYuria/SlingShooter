@@ -35,6 +35,12 @@ public class GameController : MonoBehaviour {
 
 	private int setCamera;
 
+	private bool hasBeenPressed = false;
+
+	int test = 0;
+
+
+
 	void Start (){
 	
 	
@@ -67,16 +73,30 @@ public class GameController : MonoBehaviour {
 			newDestination = FollowCam.S.poi.transform.position;
 
 			if (FollowCam.S.poi.transform.position != Vector3.zero) {
-				//if poi moves, change color 
-				this.changeButtons(Color.grey);
+				//if poi moves, make buttons clear 
+				this.changeButtons(Color.clear);
 
-				//if Button pressed (-> setCamera = 1) set camera to zero; else still follow poi
+
+			 
+				//if Button exists
+				if (GameObject.Find ("Change") != null){
+					Button change = GameObject.Find ("Change").GetComponent<Button>();
+
+					//and if button is interactable 
+				if (change.interactable == true){
+						//make Button not interactable
+					change.interactable = false;
+					} 
+				}
+
+				//if Button pressed (-> setCamera = 1) set destination to zero; else still follow poi
 				if (setCamera == 1){
 					newDestination = Vector3.zero;
 					} else {
 					newDestination = FollowCam.S.poi.transform.position;}
 				}
 		}
+
 
 	//check if camero is to zero  	  
 		if (newDestination == Vector3.zero){
@@ -85,6 +105,8 @@ public class GameController : MonoBehaviour {
 			FollowCam.S.poi = null;
 	//change buttons (back) to white
 		this.changeButtons(Color.white);
+	//aktivate Change Button
+			GameObject.Find ("Change").GetComponent<Button>().interactable = true;
 		}
 
 
@@ -164,6 +186,37 @@ public class GameController : MonoBehaviour {
 			newDestination.y = newDestination.x/2;
 		}
 
+		if (view == "Change") {
+			// Make the second button.
+			test = 1;
+			//set Button to not pressed
+			hasBeenPressed = false;
+		}
+
+	}
+
+
+	void OnGUI () {
+
+
+		//if first button pressed
+		if (test == 1) {
+
+			//if second button not pressed
+			if (!hasBeenPressed){
+			// Make a background box
+			GUI.Box (new Rect (0,Screen.height - 50,100,50),(""));
+				//if Button pressed change Projectile 
+				if(GUI.Button(new Rect(0,Screen.height - 50,100,50), "Normal")) {
+					print ("Test1");
+					hasBeenPressed = true;
+				}
+				if(GUI.Button(new Rect(50,Screen.height - 50,100,50), "Heavy")) {
+					print ("Test 2");
+					hasBeenPressed = true;
+				}
+			}
+		}
 	}
 
 
