@@ -36,14 +36,16 @@ public class GameController : MonoBehaviour {
 	private int setCamera;
 
 	public static bool activateChangeButton = true;
-
-
-
-
+	
 
 	void Start (){
 	
 	
+
+	
+
+
+
 	
 	
 	}
@@ -65,7 +67,12 @@ public class GameController : MonoBehaviour {
 		// Go to next level
 
 
+		//Find "Shots" Text and add countdown
+		Text countShots = GameObject.Find ("Shots").GetComponent<Text> ();
+		countShots.text = "Shots left " + (10 - Slingshot.counter);
 
+
+	
 
 	//check if poi is empty 
 		//if not, follow poi
@@ -167,30 +174,35 @@ public class GameController : MonoBehaviour {
 		GameObject Castle = GameObject.Find("Goal");
 		GameObject Slingshot = GameObject.Find("Slingshot");
 	
-		//check if button pressed
-		if (view == "SlingShot"){
-			//set camera to zero
-			newDestination = Vector3.zero;
+		//if Projectile didn't enter the Goal yet
+		if (Goal.goalMet != true) {
 
-			//set setCamera to 1 to check if the button is pressed
-			setCamera = 1 ;
-		}
+
+			//check if button pressed
+			if (view == "SlingShot") {
+				//set camera to zero
+				newDestination = Vector3.zero;
+
+				//set setCamera to 1 to check if the button is pressed
+				setCamera = 1;
+			}
 		
-		if (view == "Castle") {
-			//set camera position to Goal in the Castle
-			newDestination = Castle.transform.position;
-		} 
+			if (view == "Castle") {
+				//set camera position to Goal in the Castle
+				newDestination = Castle.transform.position;
+			} 
 		
-		if (view == "Both") {
-			//find the center between slingshot and Castle and zoom out
-			newDestination = (Slingshot.transform.position+Castle.transform.position)/2;
-			newDestination.y = newDestination.x/2;
-		}
+			if (view == "Both") {
+				//find the center between slingshot and Castle and zoom out
+				newDestination = (Slingshot.transform.position + Castle.transform.position) / 2;
+				newDestination.y = newDestination.x / 2;
+			}
 
-		if (view == "Change") {
-			// Make the second button.
-			activateChangeButton = true;
+			if (view == "Change") {
+				// Make the second button.
+				activateChangeButton = true;
 
+			}
 		}
 
 	}

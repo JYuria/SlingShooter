@@ -4,9 +4,9 @@ using System.Collections;
 public class CollisionEnemy : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision collision){
-		//if collisoin with Projectile start conter
+		//if collisoin with Projectile start counter
 		if (collision.gameObject.tag == "Projectile"){
-			
+			Goal.score -= 300;
 			StartCoroutine ("wait");
 
 		}

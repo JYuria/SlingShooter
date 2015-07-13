@@ -40,12 +40,21 @@ public class FollowCam : MonoBehaviour {
 				// CHECK IF IT IS RESTING (Sleeping)
 				if(poi.GetComponent<Rigidbody>().IsSleeping()){
 					
+					//if Projectile entered the Goal yet follow poi
+					if (Goal.goalMet == true) {
+						destination = GameController.S.newDestination;
+					} else {
+				
 					// set it to "null" as default value in next update
 					poi = null;
 					GameController.S.newDestination = Vector3.zero;
 					return;
+
+
 					
+					}
 				}
+
 				
 				
 			}

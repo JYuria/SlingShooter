@@ -10,8 +10,10 @@ public class ActivateH : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		// Check if the object entering the trigger is a projectile
 		if(other.gameObject.tag == "Projectile") {
-
+			//activate H (-> activate Projectile H)
 			activeH = true;
+
+			Goal.score += 200;
 
 			Instantiate(Resources.Load ("Particle Test"), position,Quaternion.identity);
 

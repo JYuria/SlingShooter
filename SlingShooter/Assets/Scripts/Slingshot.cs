@@ -19,6 +19,8 @@ public class Slingshot : MonoBehaviour {
 
 	private bool hasBeenPressed = false;
 
+	public static int counter;
+
 
 
 
@@ -43,17 +45,30 @@ public class Slingshot : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		//set game to aiming mode
-		aimingMode = true;
 
-		//Instantiate a projectile
-		projectile = Instantiate (prefabProjectile[0]) as GameObject;
+		//if Projectile didn't enter the Goal yet
+		if (Goal.goalMet != true) {
+			//if less than 10 projectiles, instatiate projectile
+			if (counter < 10) {
+				//set game to aiming mode
+				aimingMode = true;
 
-		//position the projectile at the launchpoint
-		projectile.transform.position = launchPos;
-		//disable kinematic physics for now
-		projectile.GetComponent<Rigidbody>().isKinematic = true;
 
+				//Instantiate a projectile
+				projectile = Instantiate (prefabProjectile [0]) as GameObject;
+
+				//count projectiles
+				counter += 1;
+				//substract 100 for each fired projectile
+				Goal.score -= 100;
+		
+
+				//position the projectile at the launchpoint
+				projectile.transform.position = launchPos;
+				//disable kinematic physics for now
+				projectile.GetComponent<Rigidbody> ().isKinematic = true;
+			}
+		}
 	}
 
 	// Use this for initialization
