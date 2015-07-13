@@ -3,8 +3,9 @@ using System.Collections;
 
 public class Slingshot : MonoBehaviour {
 
+
 	//inspector fields
-	public GameObject prefabProjectile;
+	public GameObject[] prefabProjectile;
 
 	public float velocityMult = 10.0f;
 
@@ -14,9 +15,9 @@ public class Slingshot : MonoBehaviour {
 	private bool aimingMode;
 
 	private Vector3 launchPos;
-	private GameObject projectile;
+	public GameObject projectile;
 
-
+	private bool hasBeenPressed = false;
 
 
 
@@ -28,6 +29,7 @@ public class Slingshot : MonoBehaviour {
 		Launchpoint = LaunchpointTrans.gameObject;
 		Launchpoint.SetActive(false);
 		launchPos = Launchpoint.transform.position;
+		GameController.activateChangeButton = false;
 	}
 
 	void OnMouseEnter(){
@@ -45,7 +47,7 @@ public class Slingshot : MonoBehaviour {
 		aimingMode = true;
 
 		//Instantiate a projectile
-		projectile = Instantiate (prefabProjectile) as GameObject;
+		projectile = Instantiate (prefabProjectile[0]) as GameObject;
 
 		//position the projectile at the launchpoint
 		projectile.transform.position = launchPos;
@@ -56,8 +58,12 @@ public class Slingshot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//Projectil is Projectile[1] at start
+		prefabProjectile [0] = prefabProjectile [1];
 
-	
+
+
+
 	}
 	
 	// Update is called once per frame
@@ -92,7 +98,43 @@ public class Slingshot : MonoBehaviour {
 			FollowCam.S.poi = projectile;
 		}
 		//fire it off
+
+
 	}
+
+
+	void OnGUI () {
+		
+
+			//check if ChangeButton is pressed
+			if (GameController.activateChangeButton == true) {
+		
+				// and if second button not pressed
+				if (!hasBeenPressed) {
+					// Make a background box
+					GUI.Box (new Rect (0, 0, 100, 50), (""));
+					
+					//if Button pressed change Projectile 
+					if (GUI.Button (new Rect (0, 0, 100, 50), "Normal")) {
+			
+						prefabProjectile [0] = prefabProjectile [1];
+						hasBeenPressed = false;
+						GameController.activateChangeButton = false;
+					}
+					//if H is activated instantiate Button
+				if (ActivateH.activeH == true) {
+						//if button pressed change Projectile
+						if (GUI.Button (new Rect (50, 0, 100, 50), "Heavy")) {
+
+							prefabProjectile [0] = prefabProjectile [2];
+							hasBeenPressed = false;
+							GameController.activateChangeButton = false;
+							
+						}
+					}
+				}
+			}	
+		}
 
 
 }

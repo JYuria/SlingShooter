@@ -35,9 +35,9 @@ public class GameController : MonoBehaviour {
 
 	private int setCamera;
 
-	private bool hasBeenPressed = false;
+	public static bool activateChangeButton = true;
 
-	int test = 0;
+
 
 
 
@@ -75,7 +75,8 @@ public class GameController : MonoBehaviour {
 			if (FollowCam.S.poi.transform.position != Vector3.zero) {
 				//if poi moves, make buttons clear 
 				this.changeButtons(Color.clear);
-
+				//
+				activateChangeButton = false;
 
 			 
 				//if Button exists
@@ -188,36 +189,14 @@ public class GameController : MonoBehaviour {
 
 		if (view == "Change") {
 			// Make the second button.
-			test = 1;
-			//set Button to not pressed
-			hasBeenPressed = false;
+			activateChangeButton = true;
+
 		}
 
 	}
 
 
-	void OnGUI () {
 
-
-		//if first button pressed
-		if (test == 1) {
-
-			//if second button not pressed
-			if (!hasBeenPressed){
-			// Make a background box
-			GUI.Box (new Rect (0,Screen.height - 50,100,50),(""));
-				//if Button pressed change Projectile 
-				if(GUI.Button(new Rect(0,Screen.height - 50,100,50), "Normal")) {
-					print ("Test1");
-					hasBeenPressed = true;
-				}
-				if(GUI.Button(new Rect(50,Screen.height - 50,100,50), "Heavy")) {
-					print ("Test 2");
-					hasBeenPressed = true;
-				}
-			}
-		}
-	}
 
 
 
