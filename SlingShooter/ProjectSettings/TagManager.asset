@@ -9,7 +9,7 @@ TagManager:
   - Buttons
   - Enemy
   - Line
-  - SuperPug
+  - Fire
   layers:
   - Default
   - TransparentFX

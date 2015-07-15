@@ -30,19 +30,10 @@ public class ProjectileTrail : MonoBehaviour {
 		// Disable until needed
 		line.enabled = false;
 		
-		// Set random line colors
-
-		float r = Random.value;
-		float g = Random.value;
-		float b = Random.value;
+		// Set line colors
+		Color c1 = Color.yellow;
+		Color c2 = Color.red;
 		
-		float r2 = Random.value;
-		float g2 = Random.value;
-		float b2 = Random.value;
-
-		Color c1 = new Color(r, g, b);
-		Color c2 = new Color(r2, g2, b2);
-
 		line.SetColors(c1,c2);
 		
 	}

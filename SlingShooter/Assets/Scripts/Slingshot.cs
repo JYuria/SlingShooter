@@ -115,20 +115,9 @@ public class Slingshot : MonoBehaviour {
 		//fire it off
 
 
-	//change velocity for each different Projectile
-	if (prefabProjectile [0] == prefabProjectile [4]){
-		velocityMult = 15;
-	}
-
-	if (prefabProjectile [0] == prefabProjectile [2] || prefabProjectile [0] == prefabProjectile [3]){
-		velocityMult = 5;
-	}
-
 	}
 
 
-
-	//Instantiate buttons to change Projectile
 	void OnGUI () {
 		
 
@@ -147,7 +136,7 @@ public class Slingshot : MonoBehaviour {
 						hasBeenPressed = false;
 						GameController.activateChangeButton = false;
 					}
-				//if H is activated instantiate Button
+					//if H is activated instantiate Button
 				if (ActivateH.activeH == true) {
 						//if button pressed change Projectile
 						if (GUI.Button (new Rect (50, 0, 100, 50), "Heavy")) {

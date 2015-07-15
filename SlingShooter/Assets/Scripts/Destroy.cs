@@ -10,25 +10,16 @@ public class Destroy : MonoBehaviour {
 		//if Collision destroy Projectile
 		if (collision.gameObject.tag == "Enemy"){
 
-			StartCoroutine ("wait");
+			Destroy(this.gameObject);
 
 			//find position when destroyed
-			position = GameObject.Find("Enemy").transform.position;
+			position = this.transform.position;
 
 			//define and instatiate particle effect <3
-//			Instantiate(Resources.Load ("explosion_particle"), position,Quaternion.identity);
-			Instantiate(Resources.Load ("CollisionEnemy"), position,Quaternion.identity);
+			Instantiate(Resources.Load ("explosion_particle"), position,Quaternion.identity);
 
 			}
 
 		}
-
-	IEnumerator wait(){
-		
-		//destroy Projectile after 0.5f
-		yield return new WaitForSeconds (0.5f);
-		Destroy(this.gameObject);
-	}
-
 
 }

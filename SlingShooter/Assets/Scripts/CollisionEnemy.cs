@@ -10,21 +10,6 @@ public class CollisionEnemy : MonoBehaviour {
 			StartCoroutine ("wait");
 
 		}
-
-
-		//if (collision.gameObject.name == "SuperPug"){
-		if (collision.gameObject.tag == "SuperPug"){
-			Goal.score += 100;
-
-			StartCoroutine ("superWait");
-
-			Vector3 position = this.transform.position;
-			
-			//define and instatiate particle effect <3
-			Instantiate(Resources.Load ("CollisionEnemy"), position,Quaternion.identity);
-
-
-		}
 	}
 	
 	
@@ -36,13 +21,6 @@ public class CollisionEnemy : MonoBehaviour {
 		yield return new WaitForSeconds (1.5f);
 		GameController.S.newDestination = Vector3.zero;
 		}
-
-	IEnumerator superWait(){
-		
-		//set destination to 0 after 1.5f
-		yield return new WaitForSeconds (0.5f);
-		Destroy(this.gameObject);
-	}
 	
 }
 
