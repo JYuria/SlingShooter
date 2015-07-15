@@ -7,6 +7,8 @@ public class CoinCount : MonoBehaviour {
 
 		Goal.score += 50;
 
+		Instantiate(Resources.Load ("Particle_Hearts"), GameObject.Find ("Treat").transform.position,Quaternion.identity);
+
 		Destroy(this.gameObject);
 	}
 }

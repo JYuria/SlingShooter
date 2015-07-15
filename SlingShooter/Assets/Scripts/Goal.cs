@@ -6,10 +6,15 @@ public class Goal : MonoBehaviour {
 	// Storing if the goal was met
 	public static bool goalMet = false;
 
-	public static int score = 1300;
+	public static int score = 1000;
 	
 	void Update (){
 	
+		if (goalMet == true) {
+			if (score < 0){
+				score = 0;
+			}
+		}
 
 	}
 
@@ -17,7 +22,7 @@ public class Goal : MonoBehaviour {
 	// Trigger got entered
 	void OnTriggerEnter(Collider other) {
 		// Check if the object entering the trigger is a projectile
-		if(other.gameObject.tag == "Projectile") {
+		if(other.gameObject.tag == "Projectile"|| other.gameObject.tag == "SuperPug") {
 			// Set the staic field to true
 			goalMet = true;
 			// Set the alpha of the color to a higher opacity
@@ -42,15 +47,20 @@ public class Goal : MonoBehaviour {
 
 			if (GUI.Button (new Rect (Screen.width/2-(Screen.width/4), Screen.height/2+(Screen.width/14), Screen.width/6, Screen.height/6), "Menu")) {
 				Application.LoadLevel("Menu");
+				Slingshot.counter = 0;
 			}
 			if (GUI.Button (new Rect (Screen.width/2-(Screen.width/4)+Screen.width/6, Screen.height/2+(Screen.width/14), Screen.width/6, Screen.height/6), "Again")) {
 				Application.LoadLevel("Game");
 				goalMet = false;
 				ActivateH.activeH = false;
+				Slingshot.counter = 0;
 			}
 			if (GUI.Button (new Rect (Screen.width/2-(Screen.width/4)+(Screen.width/6*2), Screen.height/2+(Screen.width/14), Screen.width/6, Screen.height/6), "Next")) {
 				Application.LoadLevel("Level2");
+				Slingshot.counter = 0;
 			}
+
+
 		}
 
 	}
