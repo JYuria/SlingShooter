@@ -170,12 +170,10 @@ public class GameController : MonoBehaviour {
 			//if "Slingshot" pressed switch to Slingshot -> poi = null
 
 	
-		//define Castle and Slingshot
-		GameObject Castle = GameObject.Find("Goal");
-		GameObject Slingshot = GameObject.Find("Slingshot");
+
 	
-		//if Projectile didn't enter the Goal yet
-		if (Goal.goalMet != true) {
+		//if Projectile didn't enter the Goal yet and if Shots are left
+		if (Goal.goalMet != true && Slingshot.counter != 10) {
 
 
 			//check if button pressed
@@ -189,12 +187,12 @@ public class GameController : MonoBehaviour {
 		
 			if (view == "Castle") {
 				//set camera position to Goal in the Castle
-				newDestination = Castle.transform.position;
+				newDestination = GameObject.Find("Goal").transform.position;
 			} 
 		
 			if (view == "Both") {
 				//find the center between slingshot and Castle and zoom out
-				newDestination = (Slingshot.transform.position + Castle.transform.position) / 2;
+				newDestination = (GameObject.Find("Slingshot").transform.position + GameObject.Find("Goal").transform.position) / 2;
 				newDestination.y = newDestination.x / 2;
 			}
 
@@ -205,6 +203,29 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
+	}
+
+
+
+	//Text if no Projectiles are left
+	void OnGUI () {
+
+		if (Slingshot.counter == 10) {
+
+			GUI.Box (new Rect (Screen.width / 2 - (Screen.width / 4), Screen.height / 2 - (Screen.width / 6), Screen.width / 2, Screen.width / 3), (""));
+		
+			if (GUI.Button (new Rect (Screen.width / 2 - (Screen.width / 4), Screen.height / 2 + (Screen.width / 14), Screen.width / 6, Screen.height / 6), "Menu")) {
+				Application.LoadLevel ("Menu");
+				Slingshot.counter = 0;
+			}
+			if (GUI.Button (new Rect (Screen.width / 2 - (Screen.width / 4) + Screen.width / 6, Screen.height / 2 + (Screen.width / 14), Screen.width / 6, Screen.height / 6), "Again")) {
+				Application.LoadLevel ("Game");
+				Goal.goalMet = false;
+				ActivateH.activeH = false;
+				Slingshot.counter = 0;
+			}
+		
+		}
 	}
 
 
