@@ -152,11 +152,6 @@ public class GameController : MonoBehaviour {
 		
 
 
-				
-
-
-
-
 		//if goal met check which level and chcck if more than score
 		if (Goal.goalMet == true) {
 
@@ -182,7 +177,7 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
-//		print (HighScoreLevel);
+//		print (newHighScore);
 //		print (PlayerPrefs.GetInt ("High Score 1"));
 //		print (PlayerPrefs.GetInt ("High Score 2"));
 //		print (PlayerPrefs.GetInt ("High Score 3"));
@@ -246,21 +241,21 @@ public class GameController : MonoBehaviour {
 
 			//Option
 
-			if (view == "Menu") {
-				Application.LoadLevel (0);
-				Goal.goalMet = false;
-				Slingshot.counter = 0;
-				Goal.score = 1000;
+				if (view == "Menu") {
+					Application.LoadLevel (0);
+					Goal.goalMet = false;
+					Slingshot.counter = 0;
+					Goal.score = 1000;
 
-			}
+				}
 
-			if (view == "Again") {
-				Application.LoadLevel (i);
-				Goal.goalMet = false;
-				Slingshot.counter = 0;
-				Goal.score = 1000;
-				
-			}
+				if (view == "Again") {
+					Application.LoadLevel (i);
+					Goal.goalMet = false;
+					Slingshot.counter = 0;
+					Goal.score = 1000;
+					
+				}
 
 				
 			}
@@ -295,23 +290,11 @@ public class GameController : MonoBehaviour {
 		}
 		if (i == 3) {
 			highScoreText.text = "Highscore: " + (PlayerPrefs.GetInt ("High Score 3"));
-		}
+			}
 		
 		//show score
 		Text ScoreText = GameObject.Find ("Score").GetComponent<Text> ();
 		ScoreText.text = "Score: " + (Goal.score);
-
-
-	
-
-
-//		if (Slingshot.counter == 10) {
-//			
-//			Goal.score = 0;
-//
-//			PanelGO.SetActive(true);
-//		}
-
 
 	}
 
@@ -330,9 +313,9 @@ public class GameController : MonoBehaviour {
 
 		if (Goal.goalMet == true) {
 			
+//					if (Goal.finalScore > 
 					
-					
-					GUI.Box (new Rect (Screen.width / 2 - (Screen.width / 4), Screen.height / 2 - (Screen.width / 6), Screen.width / 2, Screen.width / 3), ("You win!"));
+			GUI.Box (new Rect (Screen.width / 2 - (Screen.width / 4), Screen.height / 2 - (Screen.width / 6), Screen.width / 2, Screen.width / 3), ("You win! \n Your score is "+Goal.finalScore));
 					
 					if (GUI.Button (new Rect (Screen.width / 2 - (Screen.width / 4), Screen.height / 2 + (Screen.width / 14), Screen.width / 6, Screen.height / 6), "Menu")) {
 						Application.LoadLevel (0);
@@ -349,14 +332,16 @@ public class GameController : MonoBehaviour {
 			
 					}
 					if (GUI.Button (new Rect (Screen.width/2-(Screen.width/4)+(Screen.width/6*2), Screen.height/2+(Screen.width/14), Screen.width/6, Screen.height/6), "Next")) {
-						Application.LoadLevel(i+1);
-						Goal.goalMet = false;
-						Slingshot.counter = 0;
-						Goal.score = 1000;
+						if (i != 3){
+							Application.LoadLevel(i+1);
+							Goal.goalMet = false;
+							Slingshot.counter = 0;
+							Goal.score = 1000;
+					}
 						
 
 			}
-				}
+		}
 				
 			
 
@@ -372,25 +357,24 @@ public class GameController : MonoBehaviour {
 				if (FollowCam.S.poi.GetComponent<Rigidbody> ().IsSleeping ()) {
 			
 
-					GUI.Box (new Rect (Screen.width / 2 - (Screen.width / 4), Screen.height / 2 - (Screen.width / 6), Screen.width / 2, Screen.width / 3), ("Game over :("));
+						GUI.Box (new Rect (Screen.width / 2 - (Screen.width / 4), Screen.height / 2 - (Screen.width / 6), Screen.width / 2, Screen.width / 3), ("Game over :("));
+			
+						if (GUI.Button (new Rect (Screen.width / 2 - (Screen.width / 4), Screen.height / 2 + (Screen.width / 14), Screen.width / 6, Screen.height / 6), "Menu")) {
+							Application.LoadLevel (0);
+							Slingshot.counter = 1000;
+						}
+						if (GUI.Button (new Rect (Screen.width / 2 - (Screen.width / 4) + Screen.width / 6, Screen.height / 2 + (Screen.width / 14), Screen.width / 6, Screen.height / 6), "Again")) {
+							Application.LoadLevel (i);
+							Goal.goalMet = false;
+							Slingshot.counter = 1000;
+						}
 		
-					if (GUI.Button (new Rect (Screen.width / 2 - (Screen.width / 4), Screen.height / 2 + (Screen.width / 14), Screen.width / 6, Screen.height / 6), "Menu")) {
-						Application.LoadLevel (0);
-						Slingshot.counter = 1000;
 					}
-					if (GUI.Button (new Rect (Screen.width / 2 - (Screen.width / 4) + Screen.width / 6, Screen.height / 2 + (Screen.width / 14), Screen.width / 6, Screen.height / 6), "Again")) {
-						Application.LoadLevel (i);
-						Goal.goalMet = false;
-						Slingshot.counter = 1000;
-					}
-		
+
 				}
-
 			}
-		}
+
 	}
-
-
 
 
 
