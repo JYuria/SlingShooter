@@ -25,7 +25,6 @@ public class Slingshot : MonoBehaviour {
 
 
 
-
 	void Awake(){
 		Transform LaunchpointTrans = transform.Find ("Launchpoint");
 		Launchpoint = LaunchpointTrans.gameObject;
@@ -117,15 +116,15 @@ public class Slingshot : MonoBehaviour {
 
 	//change velocity for each different Projectile
 	if (prefabProjectile [0] == prefabProjectile [4]){
-		velocityMult = 14;
+		velocityMult = 20;
 	}
 
-	if (prefabProjectile [0] == prefabProjectile [2] || prefabProjectile [0] == prefabProjectile [3]){
-		velocityMult = 10;
-	}
-
-	if (prefabProjectile [0] == prefabProjectile [1]){
+	if (prefabProjectile [0] == prefabProjectile [2]){
 		velocityMult = 12;
+	}
+
+	if (prefabProjectile [0] == prefabProjectile [1] || prefabProjectile [0] == prefabProjectile [3]){
+		velocityMult = 14;
 	}
 
 	}
@@ -135,17 +134,27 @@ public class Slingshot : MonoBehaviour {
 	//Instantiate buttons to change Projectile
 	void OnGUI () {
 		
+//		Sprite Pug = Resources.Load("icon_pug", typeof(Sprite)) as Sprite;
+
+		//Texture Pug = Resources.Load("icon_pug"), typeof(Object)) as Texture;
 
 			//check if ChangeButton is pressed
 			if (GameController.activateChangeButton == true) {
-		
-				// and if second button not pressed
-				if (!hasBeenPressed) {
-					// Make a background box
-					GUI.Box (new Rect (0, 0, 100, 50), (""));
-					
+
+			// and if second button not pressed
+			if (!hasBeenPressed) {
+				// Make a background box
+				GUI.Box (new Rect (0, 0, 300, 50), ("Choose your Pug"));
+
+
+				Texture pug = Resources.Load("icon_pug", typeof(Texture)) as Texture;
+				Texture chubbypug = Resources.Load("icon_chubbypug", typeof(Texture)) as Texture;
+				Texture bombpug = Resources.Load("icon_bombpug", typeof(Texture)) as Texture;
+				Texture superpug = Resources.Load("icon_superpug", typeof(Texture)) as Texture;
+
+
 					//if Button pressed change Projectile 
-					if (GUI.Button (new Rect (0, 0, 100, 50), "Normal")) {
+				if (GUI.Button (new Rect (0, 50, 150, 150),pug)) {
 			
 						prefabProjectile [0] = prefabProjectile [1];
 						hasBeenPressed = false;
@@ -154,7 +163,7 @@ public class Slingshot : MonoBehaviour {
 				//if H is activated instantiate Button
 				if (ActivateH.activeH == true) {
 						//if button pressed change Projectile
-						if (GUI.Button (new Rect (100, 0, 100, 50), "Chubby")) {
+					if (GUI.Button (new Rect (150, 50, 150, 150), chubbypug)) {
 
 							prefabProjectile [0] = prefabProjectile [2];
 							hasBeenPressed = false;
@@ -164,7 +173,7 @@ public class Slingshot : MonoBehaviour {
 					}
 				if (ActivateB.activeB == true) {
 					//if button pressed change Projectile
-					if (GUI.Button (new Rect (0, 50, 100, 50), "Bomb")) {
+					if (GUI.Button (new Rect (0, 200, 150, 150), bombpug)) {
 						
 						prefabProjectile [0] = prefabProjectile [3];
 						hasBeenPressed = false;
@@ -173,7 +182,7 @@ public class Slingshot : MonoBehaviour {
 				}
 				if (ActivateS.activeS == true) {
 					//if button pressed change Projectile
-					if (GUI.Button (new Rect (50, 50, 100, 50), "Super")) {
+					if (GUI.Button (new Rect (150, 200, 150, 150), superpug)) {
 						
 						prefabProjectile [0] = prefabProjectile [4];
 						hasBeenPressed = false;
@@ -185,5 +194,5 @@ public class Slingshot : MonoBehaviour {
 			}	
 		}
 
-
 }
+

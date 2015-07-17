@@ -9,8 +9,9 @@ TagManager:
   - Buttons
   - Enemy
   - Line
-  - SuperPug
+  - Screen
   - Castle
+  - SuperPug
   layers:
   - Default
   - TransparentFX
