@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Line
   - SuperPug
+  - Castle
   layers:
   - Default
   - TransparentFX

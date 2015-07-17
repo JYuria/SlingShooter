@@ -5,13 +5,14 @@ public class ActivateH : MonoBehaviour {
 
 	public static bool activeH = false;
 
-	private Vector3 position;
 
 	void OnTriggerEnter(Collider other) {
 		// Check if the object entering the trigger is a projectile
 		if(other.gameObject.tag == "Projectile" || other.gameObject.tag == "SuperPug") {
 			//activate H (-> activate Projectile H)
 			activeH = true;
+
+			Vector3 position = this.transform.position;
 
 			Goal.score += 200;
 

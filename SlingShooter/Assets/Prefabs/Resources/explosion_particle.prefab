@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac1691131a8c844dafe8b6ace6a172a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 20
+  explosionForce: 100
 --- !u!198 &19800564
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -9711,7 +9711,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: explosionForce
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
@@ -9719,6 +9719,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: multiplier
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

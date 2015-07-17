@@ -117,11 +117,15 @@ public class Slingshot : MonoBehaviour {
 
 	//change velocity for each different Projectile
 	if (prefabProjectile [0] == prefabProjectile [4]){
-		velocityMult = 15;
+		velocityMult = 14;
 	}
 
 	if (prefabProjectile [0] == prefabProjectile [2] || prefabProjectile [0] == prefabProjectile [3]){
-		velocityMult = 5;
+		velocityMult = 10;
+	}
+
+	if (prefabProjectile [0] == prefabProjectile [1]){
+		velocityMult = 12;
 	}
 
 	}
@@ -150,7 +154,7 @@ public class Slingshot : MonoBehaviour {
 				//if H is activated instantiate Button
 				if (ActivateH.activeH == true) {
 						//if button pressed change Projectile
-						if (GUI.Button (new Rect (50, 0, 100, 50), "Heavy")) {
+						if (GUI.Button (new Rect (100, 0, 100, 50), "Chubby")) {
 
 							prefabProjectile [0] = prefabProjectile [2];
 							hasBeenPressed = false;
@@ -158,7 +162,26 @@ public class Slingshot : MonoBehaviour {
 							
 						}
 					}
+				if (ActivateB.activeB == true) {
+					//if button pressed change Projectile
+					if (GUI.Button (new Rect (0, 50, 100, 50), "Bomb")) {
+						
+						prefabProjectile [0] = prefabProjectile [3];
+						hasBeenPressed = false;
+						GameController.activateChangeButton = false;
+					}
 				}
+				if (ActivateS.activeS == true) {
+					//if button pressed change Projectile
+					if (GUI.Button (new Rect (50, 50, 100, 50), "Super")) {
+						
+						prefabProjectile [0] = prefabProjectile [4];
+						hasBeenPressed = false;
+						GameController.activateChangeButton = false;
+					}
+				}
+				}
+
 			}	
 		}
 

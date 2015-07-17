@@ -43,7 +43,7 @@ public class ProjectileTrail_S : MonoBehaviour {
 		if(poi == null) {
 			// If there is no poi yet, try looking at the camera
 			if(FollowCam.S.poi != null) {
-				if(FollowCam.S.poi.tag == "SuperPug") {
+				if(FollowCam.S.poi.tag == "Projectile") {
 					poi = FollowCam.S.poi;
 				} else {
 					return; // Give up, no poi found

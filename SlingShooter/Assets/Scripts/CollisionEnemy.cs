@@ -13,7 +13,7 @@ public class CollisionEnemy : MonoBehaviour {
 
 
 		//if (collision.gameObject.name == "SuperPug"){
-		if (collision.gameObject.tag == "SuperPug"){
+		if (collision.gameObject.name == "SuperPug(Clone)"){
 			Goal.score += 100;
 
 			StartCoroutine ("superWait");

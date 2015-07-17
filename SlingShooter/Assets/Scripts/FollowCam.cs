@@ -38,7 +38,7 @@ public class FollowCam : MonoBehaviour {
 			if (poi.tag == "Projectile") {
 				
 				// CHECK IF IT IS RESTING (Sleeping)
-				if(poi.GetComponent<Rigidbody>().IsSleeping()){
+				if(poi.GetComponent<Rigidbody>().IsSleeping() && Slingshot.counter < 10){
 					
 					//if Projectile entered the Goal yet follow poi
 					if (Goal.goalMet == true) {

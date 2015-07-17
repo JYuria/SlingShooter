@@ -66,7 +66,7 @@ GameObject:
   - 114: {fileID: 11435038}
   m_Layer: 0
   m_Name: SuperPug
-  m_TagString: SuperPug
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,7 +246,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185764}
   serializedVersion: 2
-  m_Mass: 20
+  m_Mass: 25
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 1
@@ -323,7 +323,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_TagString
-      value: SuperPug
+      value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Constraints
@@ -337,6 +337,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Parameters.endWidth
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
